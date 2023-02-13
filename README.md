@@ -96,10 +96,10 @@ public function __construct($dbhost = 'localhost',$dbname = 'dbName', $username 
 }
 ```
 The constructor will have 4 parameters:
-- $dbhost - The database host.
-- $dbname - The database name.
-- $username The database User.
-- $password - The database password for the User.
+- `$dbhost` - The database host.
+- `$dbname` - The database name.
+- `$username` - The database User.
+- `$password` - The database password for the User.
 
 ### A Function that will execute all statements
 ```php
@@ -175,7 +175,7 @@ Remove will remove a row/s or throws an exception if it get's an error.
 ### Create/Instantiate the dtabase class.
 ```php
 $db = new Database(
-  'MySQLHost',
+  'host',
   'dbName',
   'userName',
   'password'
@@ -197,6 +197,39 @@ $db->update("Update TableName set `column1` = :column1 where id = :id", ['id' =>
 ```php
 $db->remove("Delete from TableName where id = :id", ['id' => 1]);
 ```
+
+## Tips:
+Minimize connections to your server.
+
+Take this as an example:
+```php
+for($x = 1; $x <= 1000; $x++) {
+  $db = new Database(
+    'host',
+    'dbName',
+    'userName',
+    'password'
+  );
+  $data = $db->select("Select * from TableName where id = :id",["id"=>$x]);
+  // do something with $data
+}
+```
+The above code will create 1000 connections and this could lead to your server to slowing down.
+
+A better way to do this is to create the DatabaseClass object before the looping:
+```php
+$db = new Database(
+  'host',
+  'dbName',
+  'userName',
+  'password'
+);
+for($x = 1; $x <= 1000; $x++) {
+  $data = $db->select("Select * from TableName where id = :id",["id"=>$x]);
+  // do something with $data
+}
+```
+The above code will create 1 connection and will use it inside the loop.
 
 ## Credits
 Original by https://devjunky.com/PHP-OOP-Database-Class-Example/
