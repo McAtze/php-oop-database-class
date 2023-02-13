@@ -197,3 +197,6 @@ $db->update("Update TableName set `column1` = :column1 where id = :id", ['id' =>
 ```php
 $db->remove("Delete from TableName where id = :id", ['id' => 1]);
 ```
+
+## Credits
+Original by https://devjunky.com/PHP-OOP-Database-Class-Example/
