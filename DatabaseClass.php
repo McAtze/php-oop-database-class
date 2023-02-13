@@ -17,7 +17,7 @@ class DatabaseClass {
     }
 		
     /** 
-     * Insert a row/s in a Database Table
+     * Insert a row/s in a database table
      */
     public function insert($statement = '', $parameters = []) {
         try {
@@ -29,7 +29,7 @@ class DatabaseClass {
     }
 
     /**
-     * Select a row/s in a Database Table
+     * Select a row/s in a database table
      */
     public function select( $statement = '', $parameters = []) {
         try {
@@ -41,7 +41,7 @@ class DatabaseClass {
     }
 		
     /**
-     * Update a row/s in a Database Table
+     * Update a row/s in a database table
      */
     public function update($statement = '', $parameters = []) {
         try {
@@ -52,7 +52,7 @@ class DatabaseClass {
     }		
 		
     /**
-     * Remove a row/s in a Database Table
+     * Remove a row/s in a database table
      */
     public function remove($statement = '', $parameters = []) {
         try {
